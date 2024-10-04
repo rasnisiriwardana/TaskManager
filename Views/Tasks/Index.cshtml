@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TaskManager.Models.Task>
+<h2>Task List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Task", new { id = task.TaskId })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Task", new { id = task.TaskId })">Delete</a> |
+                    <a href="@Url.Action("Details", "Task", new { id = task.TaskId })">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
